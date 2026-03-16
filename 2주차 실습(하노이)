@@ -1,0 +1,122 @@
+#자료 구조 리스트 생성
+import time
+
+start = time.time()
+bag = []
+
+#요소들 넣기
+bag.append("핸드폰")
+bag.append("보조배터리")
+bag.append("텀블러")
+
+#요소 확인 및 제거
+def bagRemove(a):
+    if a in bag:
+        bag.remove(a)
+    else:
+        print("가방에 없는 물건입니다.")
+    return len(bag)
+
+#테스트
+print(bagRemove("보조배터리"))
+
+end = time.time()
+print("실행 시간 : ", end - start)
+
+
+#############################
+#Factorial 구현
+#for 문은 빅오 시간복잡도(n)
+#1000!는 숫자가 너무 커져서 오류가 남 100!으로 변경
+start = time.time()
+i = 1
+total=1
+for i in range(100):
+  total *= (1+i)
+
+print(total)
+end=time.time()
+print(end-start)
+
+
+#순환구조는 시간 복잡도(n)
+start= time.time()
+def factorial(x):
+  if x == 1:
+    return 1
+  return x * factorial(x-1)
+
+print(factorial(100))
+end= time.time()
+
+print(end-start)
+
+#######################################
+#x^n 구현
+#for 문 구현
+#시간 복잡도 = n
+start = time.time()
+total = 1
+for i in range(1,100+1):
+  total *= 2
+print(total)
+end= time.time()
+print("실행시간:", end-start)
+
+
+#순환 구조
+#시간 복잡도 = n
+start = time.time()
+def square(n):
+  if n == 1:
+    return 2
+  return 2*square(n-1)
+
+print(square(100))
+
+end=time.time()
+print("실행시간", end-start)
+
+
+######################################
+#Fibonnacci 수열
+#반복분
+start = time.time()
+total = 0
+first = 0
+second= 1
+for i in range(2,11):
+    total = first + second
+    first = second
+    second = total
+
+print(total)
+end=time.time()
+print(end-start)
+
+#순환
+#시간복잡도 2^n
+start=time.time()
+def fibonacci(n):
+  if n == 0:
+    return 0
+  elif n == 1:
+    return 1
+  else:
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))
+end=time.time()
+print(end-start)
+
+###################################
+#하노이탑
+def hanoi(m_1,m_2, m_3, n):
+  if n== 1:
+    print("가장 큰 원판",n,"을", m_1, "->", m_3)
+  else:
+    hanoi(m_1, m_3, m_2, n-1)
+    print(n,"원판을", m_1,"->",m_3)
+    hanoi(m_2, m_1, m_3, n-1)
+
+hanoi("A", "B", "C", 3)
