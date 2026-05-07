@@ -120,3 +120,8 @@ def hanoi(m_1,m_2, m_3, n):
     hanoi(m_2, m_1, m_3, n-1)
 
 hanoi("A", "B", "C", 3)
+
+a = [1,4,3]
+b= [1,2,3]
+c = sorted(a)
+print(c)
